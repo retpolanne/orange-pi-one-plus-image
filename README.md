@@ -12,9 +12,8 @@ yay -S - < yay.txt
 ## Baking image
 
 ```sh
-export MACHINE=orange-pi-one-plus
-source poky/oe-init-build-env
-bitbake core-image-minimal
+source poky/oe-init-build-env orange-pi-one-plus
+bitbake core-image-full-cmdline
 ```
 
 ## Pushing to SD Card
@@ -22,5 +21,5 @@ bitbake core-image-minimal
 ```sh
 
 # Change /dev/sdX to your device
-sudo bmaptool copy --bmap orange-pi-one-plus/tmp/deploy/images/orange-pi-one-plus/core-image-minimal-orange-pi-one-plus.rootfs.wic.bmap orange-pi-one-plus/tmp/deploy/images/orange-pi-one-plus/core-image-minimal-orange-pi-one-plus.rootfs.wic.gz /dev/sdX
+sudo bmaptool copy --bmap orange-pi-one-plus/tmp/deploy/images/orange-pi-one-plus/core-image-full-cmdline-orange-pi-one-plus.rootfs.wic.bmap orange-pi-one-plus/tmp/deploy/images/orange-pi-one-plus/core-image-full-cmdline-orange-pi-one-plus.rootfs.wic.gz /dev/sdX
 ```
