@@ -26,14 +26,14 @@ sudo bmaptool copy --bmap orange-pi-one-plus/tmp/deploy/images/orange-pi-one-plu
 
 ## Testing
 
-Install tbot - python-pipx is needed:
-
 ```sh
-pipx install git+https://github.com/rahix/tbot@v0.10.5
+python3 -m venv ./venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 Running a test
 
 ```sh
-newbot -c config.orange_pi_test_config tc.interactive.test_uboot_dhcp
+pytest -x -vs --tbot-config config.orange_pi_test_config tc/interactive.py
 ```

@@ -1,1 +1,2 @@
 git+https://github.com/rahix/tbot@v0.10.5
+pytest
