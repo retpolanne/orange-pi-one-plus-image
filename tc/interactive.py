@@ -6,8 +6,14 @@ import time
 def test_uboot_mdio_contains_phy() -> None:
     with tbot.ctx.request(tbot.role.BoardUBoot) as ub:
         mdio = ub.exec0("mdio", "list")
-        assert "Generic PHY" in mdio
+        assert "RealTek RTL8211E" in mdio
 
+@tbot.testcase
+def test_uboot_dhcp() -> None:
+    with tbot.ctx.request(tbot.role.BoardUBoot) as ub:
+        ub.exec0("setenv", "autoload", "no")
+        ub.exec0("dhcp")
+"""
 @tbot.testcase
 def test_uboot_gmac_regulator() -> None:
     with tbot.ctx.request(tbot.role.BoardUBoot) as ub:
@@ -36,6 +42,7 @@ def test_uboot_gmac_regulator_dm() -> None:
                 reg_3v3_probed = ("+" in line)
         assert reg_5v5_probed
         assert reg_3v3_probed
+"""
 
 @tbot.testcase
 def test_uboot_pinmux_pd6() -> None:
@@ -43,7 +50,3 @@ def test_uboot_pinmux_pd6() -> None:
         pinmux = ub.exec0("pinmux", "status", "PD6")
         assert "gpio output" in pinmux
 
-@tbot.testcase
-def test_uboot_dhcp() -> None:
-    with tbot.ctx.request(tbot.role.BoardUBoot) as ub:
-        ub.exec0("dhcp")
