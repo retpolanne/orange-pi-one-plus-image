@@ -1,0 +1,3 @@
+[submodule "orange-pi-one-plus/workspace/sources/linux-mainline"]
+	path = orange-pi-one-plus/workspace/sources/linux-mainline
+	url = git@github.com:retpolanne/linux.git
